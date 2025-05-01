@@ -11,12 +11,10 @@
   <!-- Header -->
   <header class="bg-white shadow p-4">
     <div class="container mx-auto flex justify-between items-center">
-      <!-- Logo -->
-      <img src="https://i.imgur.com/YESBNzA.jpg" alt="Logo Toko Syahrullkce" class="w-12 h-12">
-      
-      <!-- Judul Toko -->
-      <h1 class="text-2xl font-bold ml-2">🛍️ Toko Syahrullkce</h1>
-
+      <div class="flex items-center">
+        <img src="https://i.imgur.com/YESBNzA.jpg" alt="Logo Toko Syahrullkce" class="w-12 h-12 mr-2">
+        <h1 class="text-2xl font-bold">🛍️ Toko Syahrullkce</h1>
+      </div>
       <button onclick="showCart()" class="relative text-blue-600 hover:underline">
         🛒 Keranjang
         <span id="cart-count" class="absolute -top-2 -right-4 bg-red-500 text-white text-xs rounded-full px-2">0</span>
@@ -27,9 +25,7 @@
   <!-- Produk -->
   <main class="container mx-auto py-10 px-4">
     <h2 class="text-3xl font-bold mb-8 text-center">✨ Produk Tersedia ✨</h2>
-    <div id="product-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-      <!-- Produk akan dimuat dari array -->
-    </div>
+    <div id="product-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8"></div>
   </main>
 
   <!-- Cart Popup -->
@@ -39,9 +35,22 @@
       <h3 class="text-xl font-bold mb-4">Keranjang Belanja</h3>
       <ul id="cart-items" class="space-y-2 mb-4"></ul>
       <p class="text-right font-bold">Total: Rp <span id="cart-total">0</span></p>
-      <button onclick="checkoutWhatsApp()" class="mt-4 w-full bg-green-500 text-white py-2 rounded hover:bg-green-600">
-        Checkout via WhatsApp
-      </button>
+
+      <!-- Tombol Pembayaran -->
+      <div class="grid grid-cols-1 gap-2 mt-4">
+        <button onclick="checkoutWhatsApp()" class="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600">
+          Checkout via WhatsApp
+        </button>
+        <button class="w-full bg-orange-500 text-white py-2 rounded hover:bg-orange-600" onclick="alert('Metode pembayaran ShopeePay belum aktif. Hubungi admin.')">
+          Bayar via ShopeePay
+        </button>
+        <button class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600" onclick="alert('Metode pembayaran DANA belum aktif. Hubungi admin.')">
+          Bayar via DANA
+        </button>
+        <button class="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700" onclick="alert('Metode pembayaran GoPay belum aktif. Hubungi admin.')">
+          Bayar via GoPay
+        </button>
+      </div>
     </div>
   </div>
 
@@ -57,7 +66,7 @@
         name: 'Gantungan kunci bisa 1 sisi atau dua sisi',
         price: 5000,
         imageUrl: 'https://i.imgur.com/VQ969Uq.jpg',
-        description: 'Gantungan kunci unik yang dapat dicetak 1 sisi atau 2 sisi,desain custom dan cocok untuk souvenir.',
+        description: 'Gantungan kunci unik yang dapat dicetak 1 sisi atau 2 sisi, desain custom dan cocok untuk souvenir.',
         stock: 70
       },
       {
@@ -83,7 +92,6 @@
         alert('Stok produk habis!');
         return;
       }
-      
       products[index].stock--;
       cart.push({ name, price });
       updateCartCount();
@@ -115,7 +123,6 @@
       const cartTotalEl = document.getElementById('cart-total');
       cartItemsEl.innerHTML = '';
       let total = 0;
-
       cart.forEach((item, index) => {
         total += item.price;
         cartItemsEl.innerHTML += `
@@ -126,7 +133,6 @@
           </li>
         `;
       });
-
       cartTotalEl.innerText = total.toLocaleString();
     }
 
@@ -139,20 +145,16 @@
         alert("Keranjang kosong!");
         return;
       }
-
       let message = "Halo! Saya ingin memesan:\n";
       let total = 0;
-
       cart.forEach((item, index) => {
         message += `${index + 1}. ${item.name} - Rp ${item.price.toLocaleString()}\n`;
         total += item.price;
       });
-
       message += `\nTotal: Rp ${total.toLocaleString()}`;
       const encodedMessage = encodeURIComponent(message);
       const phoneNumber = "6285793313045";
       window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, "_blank");
-
       cart = [];
       updateCartCount();
       closeCart();
@@ -162,7 +164,6 @@
     function loadProducts() {
       const productList = document.getElementById('product-list');
       productList.innerHTML = '';
-
       products.forEach((product, index) => {
         productList.innerHTML += `
           <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
