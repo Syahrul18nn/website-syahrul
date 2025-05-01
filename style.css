@@ -1,0 +1,240 @@
+/* CSS untuk teks berjalan */
+.marquee {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+  }
+  
+  .marquee-text {
+    display: inline-block;
+    animation: marquee 10s linear infinite;
+  }
+  
+  @keyframes marquee {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+  
+  /* Styling umum untuk halaman */
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f7fafc;
+    color: #2d3748;
+  }
+  
+  header {
+    background-color: #ffffff;
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  header h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  header button {
+    font-size: 1.1rem;
+    color: #3182ce;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  header button:hover {
+    text-decoration: underline;
+  }
+  
+  #cart-count {
+    position: absolute;
+    top: -0.5rem;
+    right: -0.5rem;
+    background-color: #f56565;
+    color: white;
+    font-size: 0.75rem;
+    border-radius: 50%;
+    padding: 0.2rem 0.5rem;
+  }
+  
+  footer {
+    background-color: #ffffff;
+    border-top: 1px solid #e2e8f0;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+  }
+  
+  footer p {
+    font-size: 0.9rem;
+    color: #4a5568;
+  }
+  
+  button {
+    cursor: pointer;
+  }
+  
+  button:hover {
+    opacity: 0.9;
+  }
+  
+  button:active {
+    opacity: 0.8;
+  }
+  
+  /* Styling produk */
+  #product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .product-card {
+    background-color: #ffffff;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  
+  .product-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .product-card img:hover {
+    transform: scale(1.05);
+  }
+  
+  .product-card .product-info {
+    padding: 1rem;
+  }
+  
+  .product-card .product-info h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  .product-card .product-info p {
+    font-size: 0.875rem;
+    color: #4a5568;
+    margin-bottom: 0.5rem;
+  }
+  
+  .product-card .product-info .price {
+    font-size: 1.1rem;
+    color: #3182ce;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  .product-card button {
+    background-color: #3182ce;
+    color: white;
+    font-size: 1rem;
+    padding: 0.75rem;
+    width: 100%;
+    border: none;
+    border-radius: 0.5rem;
+  }
+  
+  .product-card button:hover {
+    background-color: #63b3ed;
+  }
+  
+  .product-card button:active {
+    background-color: #2b6cb0;
+  }
+  
+  /* Popup keranjang */
+  #cart-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    display: none;
+  }
+  
+  #cart-popup .cart-content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  #cart-popup .cart-content button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: #2d3748;
+  }
+  
+  #cart-items {
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+  }
+  
+  #cart-items li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  #cart-items li span {
+    font-size: 1rem;
+  }
+  
+  #cart-items button {
+    background-color: #f56565;
+    color: white;
+    font-size: 0.875rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
+  
+  #cart-items button:hover {
+    background-color: #e53e3e;
+  }
+  
+  #cart-items button:active {
+    background-color: #c53030;
+  }
+  
+  #qr-section {
+    margin-top: 1rem;
+    text-align: center;
+  }
+  
+  #qr-section img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    border-radius: 0.5rem;
+    border: 2px solid #e2e8f0;
+  }
+  
+  
